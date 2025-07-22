@@ -2,19 +2,14 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const filtersSlice = createSlice({
   name: "filters",
-  initialState: {
-    name: "",
-  },
+  initialState: "",
   reducers: {
-    changeFilter: (state, action) => {
-      state.name = action.payload;
-    },
+    setFilter: (state, action) => action.payload,
   },
 });
 
-export const { changeFilter } = filtersSlice.actions;
+export const { setFilter } = filtersSlice.actions;
 
-// Отримуємо значення фільтра
-export const selectNameFilter = (state) => state.filters.name;
+export const selectNameFilter = (state) => state.filters;
 
 export default filtersSlice.reducer;

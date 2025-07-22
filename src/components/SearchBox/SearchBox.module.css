@@ -1,7 +1,9 @@
 .searchBox {
   width: 100%;
   max-width: 300px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
+  /* на середину екрана */
+  margin: 0 auto;
 }
 
 label {
@@ -11,8 +13,10 @@ label {
 }
 
 input {
-  width: 100%;
+  width: 300px;
+  /* margin: 0 auto; */
   padding: 8px;
   border: 1px solid black;
   border-radius: 4px;
+  margin-bottom: 20px;
 }

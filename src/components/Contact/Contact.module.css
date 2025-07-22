@@ -1,4 +1,4 @@
-.li {
+.item {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -11,7 +11,28 @@
   /* max-width: 500px; */
 }
 
-.containerLi {
+.button {
+  background-color: #f44336;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #d32f2f;
+}
+
+p {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* .containerLi {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -40,4 +61,4 @@
   padding: 4px 8px;
   cursor: pointer;
   font-size: 12px;
-}
+} */

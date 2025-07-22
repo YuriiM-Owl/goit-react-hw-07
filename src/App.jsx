@@ -1,29 +1,35 @@
-import ContactForm from "./components/ContactForm/ContactForm";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchContacts } from "./redux/contactsOps";
+import {
+  selectContactsLoading,
+  selectContactsError,
+} from "./redux/contactsSlice";
 import ContactList from "./components/ContactList/ContactList";
+import ContactForm from "./components/ContactForm/ContactForm";
 import SearchBox from "./components/SearchBox/SearchBox";
-import { useSelector } from "react-redux";
-import { selectContacts } from "./redux/contactsSlice";
-import { selectNameFilter } from "./redux/filtersSlice";
 import "./App.css";
 
-const App = () => {
-  // Отримуємо дані з Redux
-  const contacts = useSelector(selectContacts);
-  const filter = useSelector(selectNameFilter);
+function App() {
+  const dispatch = useDispatch();
+  const isLoading = useSelector(selectContactsLoading);
+  const error = useSelector(selectContactsError);
 
-  // Фільтруємо контакти
-  const filteredContacts = contacts.filter((contact) =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
-  );
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   return (
     <div className="containerApp">
       <h1>Phonebook</h1>
+      {isLoading && <p>Loading...</p>}
+      {error && <p>Error: {error}</p>}
+
       <ContactForm />
       <SearchBox />
-      <ContactList contacts={filteredContacts} />
+      <ContactList />
     </div>
   );
-};
+}
 
 export default App;
