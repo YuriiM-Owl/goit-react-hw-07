@@ -1,23 +1,24 @@
-import PropTypes from "prop-types";
-import css from "./Contact.module.css";
+import { useDispatch } from 'react-redux';
+import { deleteContact } from '../../redux/contactsOps';
+import css from './Contact.module.css';
 
-const Contact = ({ name, number, onDelete }) => {
+const Contact = ({ id, name, number }) => {
+  const dispatch = useDispatch();
+
+  const handleDelete = () => {
+    dispatch(deleteContact(id));
+  };
+
   return (
     <li className={css.item}>
       <p>
         {name}: {number}
       </p>
-      <button type="button" className={css.button} onClick={onDelete}>
+      <button type="button" className={css.button} onClick={handleDelete}>
         Delete
       </button>
     </li>
   );
-};
-
-Contact.propTypes = {
-  name: PropTypes.string.isRequired,
-  number: PropTypes.string.isRequired,
-  onDelete: PropTypes.func.isRequired,
 };
 
 export default Contact;
